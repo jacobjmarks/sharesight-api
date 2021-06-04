@@ -1,17 +1,17 @@
 {
-  "name": "up-bank-api",
+  "name": "sharesight-api",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Jacob Marks <jacobjmarks@outlook.com>",
-  "homepage": "https://github.com/jacobjmarks/up-bank-api",
+  "homepage": "https://github.com/jacobjmarks/sharesight-api",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jacobjmarks/up-bank-api.git"
+    "url": "https://github.com/jacobjmarks/sharesight-api.git"
   },
   "bugs": {
-    "url": "https://github.com/jacobjmarks/up-bank-api/issues"
+    "url": "https://github.com/jacobjmarks/sharesight-api/issues"
   },
   "scripts": {
     "clean": "rimraf dist",

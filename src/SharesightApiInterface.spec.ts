@@ -25,7 +25,7 @@ describe("Sharesight API Interface", () => {
       const headerToken = `HEAD_TOKEN_${randomUUID()}`;
       const bodyToken = `BODY_TOKEN_${randomUUID()}`;
 
-      mockedAxios.get.mockResolvedValueOnce(<AxiosResponse<string>>{
+      mockedAxios.get.mockResolvedValueOnce({
         status: 200,
         statusText: "OK",
         data: `<html>
@@ -37,13 +37,13 @@ describe("Sharesight API Interface", () => {
             <input type="hidden" name="authenticity_token" value="${bodyToken}" />
           </body>
         </html>`,
-      });
+      } as AxiosResponse<string>);
 
-      mockedAxios.post.mockResolvedValueOnce(<AxiosResponse>{
+      mockedAxios.post.mockResolvedValueOnce({
         status: 302,
         statusText: "FOUND",
         headers: { authorization: "Bearer token" },
-      });
+      } as AxiosResponse);
 
       const username = "testuser-email";
       const password = "testuser-password";
@@ -71,7 +71,7 @@ describe("Sharesight API Interface", () => {
       const headerToken = `HEAD_TOKEN_${randomUUID()}`;
       const bodyToken = `BODY_TOKEN_${randomUUID()}`;
 
-      mockedAxios.get.mockResolvedValueOnce(<AxiosResponse<string>>{
+      mockedAxios.get.mockResolvedValueOnce({
         status: 200,
         statusText: "OK",
         data: `<html>
@@ -83,13 +83,13 @@ describe("Sharesight API Interface", () => {
             <input type="hidden" name="authenticity_token" value="${bodyToken}" />
           </body>
         </html>`,
-      });
+      } as AxiosResponse<string>);
 
-      mockedAxios.post.mockResolvedValueOnce(<AxiosResponse>{
+      mockedAxios.post.mockResolvedValueOnce({
         status: 302,
         statusText: "FOUND",
         headers: {},
-      });
+      } as AxiosResponse);
 
       const username = "testuser-email";
       const password = "INVALID_PASSWORD";

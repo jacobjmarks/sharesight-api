@@ -16,8 +16,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "yarn clean && tsc",
-    "test": "jest",
-    "coverage": "jest --coverage"
+    "test": "jest --group=unit",
+    "coverage": "yarn test --coverage"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -33,6 +33,7 @@
     "@types/qs": "^6.9.6",
     "@types/tough-cookie": "^4.0.0",
     "jest": "^27.0.1",
+    "jest-runner-groups": "^2.1.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^27.0.1",
     "ts-node": "^10.0.0",

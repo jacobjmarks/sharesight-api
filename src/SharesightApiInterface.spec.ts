@@ -1,3 +1,4 @@
+/** @group unit */
 import axios, { AxiosResponse } from "axios";
 import axiosCookieJarSupport from "axios-cookiejar-support";
 import { randomUUID } from "crypto";

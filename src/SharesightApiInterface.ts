@@ -4,6 +4,7 @@ import { JSDOM } from "jsdom";
 import * as qs from "qs";
 import { CookieJar } from "tough-cookie";
 import { SHARESIGHT_API_BASEURL, SHARESIGHT_LOGIN_PAGE } from "./config";
+import { PortfolioModule } from "./modules";
 
 export interface InterfaceContext {
   agent: AxiosInstance;
@@ -12,11 +13,15 @@ export interface InterfaceContext {
 export class SharesightApiInterface {
   protected ctx: InterfaceContext;
 
+  public portfolios: PortfolioModule;
+
   constructor() {
     const agent = axios.create({ baseURL: SHARESIGHT_API_BASEURL, withCredentials: true });
     axiosCookieJarSupport(agent);
     agent.defaults.jar = new CookieJar();
     this.ctx = { agent };
+
+    this.portfolios = new PortfolioModule(this.ctx);
   }
 
   public async login(username: string, password: string): Promise<SharesightApiInterface> {

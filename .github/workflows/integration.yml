@@ -1,0 +1,35 @@
+name: Integration tests
+
+on:
+  schedule:
+    - cron: "0 0 12 1/1 * ? *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        uses: borales/actions-yarn@v2.0.0
+        with.cmd: install
+
+      - name: Run integration tests
+        uses: borales/actions-yarn@v2.0.0
+        with.cmd: "test:int"
+        env:
+          SHARESIGHT_USERNAME: ${{ secrets.SHARESIGHT_USERNAME }}
+          SHARESIGHT_PASSWORD: ${{ secrets.SHARESIGHT_PASSWORD }}
